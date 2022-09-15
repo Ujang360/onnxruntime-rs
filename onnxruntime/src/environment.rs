@@ -243,7 +243,6 @@ impl EnvBuilder {
 mod tests {
     use super::*;
     use std::sync::{RwLock, RwLockWriteGuard};
-    use test_env_log::test;
 
     impl G_ENV {
         fn is_initialized(&self) -> bool {
@@ -328,7 +327,10 @@ mod tests {
         let main_env = Environment::new(initial_name.clone(), LoggingLevel::Warning).unwrap();
         let main_env_ptr = main_env.env_ptr() as usize;
 
-        let children: Vec<_> = (0..10)
+        assert_eq!(main_env.name(), initial_name);
+        assert_eq!(main_env.env_ptr() as usize, main_env_ptr);
+
+        assert!((0..10)
             .map(|t| {
                 let initial_name_cloned = initial_name.clone();
                 std::thread::spawn(move || {
@@ -343,13 +345,7 @@ mod tests {
                     assert_eq!(env.env_ptr() as usize, main_env_ptr);
                 })
             })
-            .collect();
-
-        assert_eq!(main_env.name(), initial_name);
-        assert_eq!(main_env.env_ptr() as usize, main_env_ptr);
-
-        let res: Vec<std::thread::Result<_>> =
-            children.into_iter().map(|child| child.join()).collect();
-        assert!(res.into_iter().all(|r| std::result::Result::is_ok(&r)));
+            .map(|child| child.join())
+            .all(|r| std::result::Result::is_ok(&r)));
     }
 }

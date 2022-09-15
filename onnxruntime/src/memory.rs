@@ -52,7 +52,6 @@ impl Drop for MemoryInfo {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use test_env_log::test;
 
     #[test]
     fn memory_info_constructor_destructor() {
