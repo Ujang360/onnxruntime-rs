@@ -53,7 +53,7 @@ impl Drop for MemoryInfo {
 mod tests {
     use super::*;
 
-    #[test]
+    #[test_log::test]
     fn memory_info_constructor_destructor() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         std::mem::drop(memory_info);

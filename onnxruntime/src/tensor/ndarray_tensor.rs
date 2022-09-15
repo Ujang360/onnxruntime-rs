@@ -58,7 +58,7 @@ mod tests {
     use super::*;
     use ndarray::{arr1, arr2, arr3};
 
-    #[test]
+    #[test_log::test]
     fn softmax_1d() {
         let array = arr1(&[1.0_f32, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0]);
 
@@ -75,7 +75,7 @@ mod tests {
         assert!(diff.iter().all(|d| d.abs() < 1.0e-7));
     }
 
-    #[test]
+    #[test_log::test]
     fn softmax_2d() {
         let array = arr2(&[
             [1.0_f32, 2.0, 3.0, 4.0, 1.0, 2.0, 3.0],
@@ -100,7 +100,7 @@ mod tests {
         assert!(diff.iter().all(|d| d.abs() < 1.0e-7));
     }
 
-    #[test]
+    #[test_log::test]
     fn softmax_3d() {
         let array = arr3(&[
             [

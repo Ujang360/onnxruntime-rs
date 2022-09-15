@@ -21,7 +21,7 @@ mod download {
         GraphOptimizationLevel, LoggingLevel,
     };
 
-    #[test]
+    #[test_log::test]
     fn squeezenet_mushroom() {
         const IMAGE_TO_LOAD: &str = "mushroom.png";
 
@@ -132,7 +132,7 @@ mod download {
         // }
     }
 
-    #[test]
+    #[test_log::test]
     fn mnist_5() {
         const IMAGE_TO_LOAD: &str = "mnist_5.jpg";
 
@@ -231,7 +231,7 @@ mod download {
     //     '--output', 'upsample.onnx',
     // ])
     // ```
-    #[test]
+    #[test_log::test]
     fn upsample() {
         const IMAGE_TO_LOAD: &str = "mushroom.png";
 

@@ -200,7 +200,7 @@ mod tests {
     use ndarray::{arr0, arr1, arr2, arr3};
     use std::ptr;
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_0d_i32() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr0::<i32>(123);
@@ -209,7 +209,7 @@ mod tests {
         assert_eq!(tensor.shape(), expected_shape);
     }
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_1d_i32() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr1(&[1_i32, 2, 3, 4, 5, 6]);
@@ -218,7 +218,7 @@ mod tests {
         assert_eq!(tensor.shape(), expected_shape);
     }
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_2d_i32() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr2(&[[1_i32, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]]);
@@ -226,7 +226,7 @@ mod tests {
         assert_eq!(tensor.shape(), &[2, 6]);
     }
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_3d_i32() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr3(&[
@@ -238,7 +238,7 @@ mod tests {
         assert_eq!(tensor.shape(), &[3, 2, 6]);
     }
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_1d_string() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr1(&[
@@ -250,7 +250,7 @@ mod tests {
         assert_eq!(tensor.shape(), &[3]);
     }
 
-    #[test]
+    #[test_log::test]
     fn orttensor_from_array_3d_str() {
         let memory_info = MemoryInfo::new(AllocatorType::Arena, MemType::Default).unwrap();
         let array = arr3(&[

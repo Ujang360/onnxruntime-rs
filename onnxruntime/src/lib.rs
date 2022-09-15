@@ -544,7 +544,7 @@ impl From<MemType> for sys::OrtMemType {
 mod test {
     use super::*;
 
-    #[test]
+    #[test_log::test]
     fn test_char_p_to_string() {
         let s = std::ffi::CString::new("foo").unwrap();
         let ptr = s.as_c_str().as_ptr();

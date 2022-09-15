@@ -277,7 +277,7 @@ mod tests {
         }
     }
 
-    #[test]
+    #[test_log::test]
     fn env_is_initialized() {
         let _run_lock = CONCURRENT_TEST_RUN.single_test_run();
 
@@ -298,7 +298,7 @@ mod tests {
     }
 
     #[ignore]
-    #[test]
+    #[test_log::test]
     fn sequential_environment_creation() {
         let _concurrent_run_lock_guard = CONCURRENT_TEST_RUN.single_test_run();
 
@@ -319,7 +319,7 @@ mod tests {
         }
     }
 
-    #[test]
+    #[test_log::test]
     fn concurrent_environment_creations() {
         let _concurrent_run_lock_guard = CONCURRENT_TEST_RUN.single_test_run();
 
